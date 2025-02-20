@@ -12,7 +12,7 @@ const DropdownMenu: React.FC<MenuProps> = ({ onHistorySelected, searchHistory })
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light">
-      <div className="container-fluid justify-content-end">
+      <div className="container-fluid">
         <h1 className="mb-0">Country Search</h1>
         <div className="dropdown ms-auto">
           <button
