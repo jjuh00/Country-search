@@ -17,12 +17,8 @@ const DropdownMenu: React.FC = () => {
           {isMenuOpen && (
             <div className="dropdown-menu show">
               <div className="dropdown-item d-flex justiy-content-between align-items-center">
-                Dark theme &emsp;&emsp;&emsp;&emsp;&emsp;
-                <i className="fi fi-ss-moon-stars"></i>
-              </div>
-              <div className="dropdown-item d-flex justify-content-between align-items-center">
-                White theme
-                <i className="fi fi-tr-brightness"></i>
+                History &emsp;&emsp;&emsp;&emsp;&emsp;
+                <i className="fi fi-ss-time-past"></i>
               </div>
             </div>
           )}
