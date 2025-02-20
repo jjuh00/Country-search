@@ -1,8 +1,6 @@
 import React from "react";
 import DropdownMenu from "./components/Menu";
 import SearchBar from "./components/Searchbar";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "./styles/App.css";
 
 const App: React.FC = () => {
   return (
