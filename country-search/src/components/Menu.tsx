@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "../styles/App.css";
 
 const DropdownMenu: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

@@ -1,6 +1,5 @@
 import React from "react";
 import { CountryData } from '../types/Country';
-import "../styles/App.css";
 
 interface CountryCardProps {
     country: CountryData;
@@ -9,7 +8,6 @@ interface CountryCardProps {
 const CountryCard: React.FC<CountryCardProps> = ({ country }) => {
     const languageKey = Object.keys(country.languages)[0];
     const currencyKey = Object.keys(country.currencies)[0];
-    const nativeNameKey = Object.keys(country.name.nativeName)[0];
 
     return (
         <div className="country-card">
@@ -24,7 +22,7 @@ const CountryCard: React.FC<CountryCardProps> = ({ country }) => {
                         <i className="fi fi-rr-earth-americas"></i>
                         <div>
                             <h3>Region</h3>
-                            <p>{country.subregion} ({country.continents[0]})</p>
+                            <p>{country.subregion} ({country.subregion !== country.continents[0] ? country.continents[0] : ""})</p>
                         </div>
                     </div>
 
@@ -33,9 +31,6 @@ const CountryCard: React.FC<CountryCardProps> = ({ country }) => {
                         <div>
                             <h3>Language</h3>
                             <p>{country.languages[languageKey]}</p>
-                            <p className="native-text">
-                                {country.name.nativeName[nativeNameKey].official}
-                            </p>
                         </div>
                     </div>
 
@@ -44,8 +39,7 @@ const CountryCard: React.FC<CountryCardProps> = ({ country }) => {
                         <div>
                             <h3>Currency</h3>
                             <p>
-                                {country.currencies[currencyKey].name} &nbsp;
-                                ({country.currencies[currencyKey].symbol})
+                                {country.currencies[currencyKey].name} ({country.currencies[currencyKey].symbol})
                             </p>
                         </div>
                     </div>
