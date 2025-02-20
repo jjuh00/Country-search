@@ -4,29 +4,29 @@ import SearchBar from "./components/Searchbar";
 import { useSearchHistory } from "./hooks/UseHistory";
 
 const App: React.FC = () => {
-  const { searchHistory, addToHistory } = useSearchHistory();
-  const searchBarRef = useRef<any>(null);
+    const { searchHistory, addToHistory } = useSearchHistory();
+    const searchBarRef = useRef<any>(null);
 
-  const handleHistorySelect = (countryName: string) => {
-    if (searchBarRef.current) {
-      searchBarRef.current.performSearch(countryName);
-    }
-  };
+    const handleHistorySelect = (countryName: string) => {
+        if (searchBarRef.current) {
+            searchBarRef.current.performSearch(countryName);
+        }
+    };
 
-  return (
-    <div className="app-container">
-      <DropdownMenu 
-        onHistorySelected={handleHistorySelect}
-        searchHistory={searchHistory}
-      />
-      <main className="main-content">
-        <SearchBar 
-          ref={searchBarRef}
-          onSearchComplete={addToHistory}
-        />
-      </main>
-    </div>
-  )
+    return (
+        <div className="app-container">
+            <DropdownMenu 
+                onHistorySelected={handleHistorySelect}
+                searchHistory={searchHistory}
+            />
+            <main className="main-content">
+                <SearchBar 
+                ref={searchBarRef}
+                onSearchComplete={addToHistory}
+              />
+          </main>
+      </div>
+    );
 }
 
 export default App;
