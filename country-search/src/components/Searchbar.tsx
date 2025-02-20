@@ -1,15 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, forwardRef, useImperativeHandle } from "react";
 import { CountryData } from "../types/Country"
 import CountryCard from "./CountryCard";
 
-const SearchBar: React.FC = () => {
+interface SearchBarProps {
+  onSearchComplete?: (CountryName: string) => void;
+}
+
+const SearchBar = forwardRef<any, SearchBarProps>(({ onSearchComplete }, ref) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [countryData, setCountryData] = useState<CountryData | null>(null);
 
-  const fetchCountry = async () => {
-    if (!searchTerm.trim()) {
+  useImperativeHandle(ref, () => ({
+    performSearch: (countryName: string) => {
+      setSearchTerm(countryName);
+      fetchCountry(countryName);
+    }
+  }))
+
+  const fetchCountry = async (name: string = searchTerm) => {
+    if (!name.trim()) {
       setError("Please enter a country name");
       return;
     }
@@ -18,7 +29,7 @@ const SearchBar: React.FC = () => {
     setError(null);
 
     try {
-      const formattedName = searchTerm.trim().replace(/\s+/g, '%20');
+      const formattedName = name.trim().replace(/\s+/g, '%20');
       const response = await fetch(`https://restcountries.com/v3.1/name/${formattedName}`);
       
       if (response.status === 404) {
@@ -27,6 +38,7 @@ const SearchBar: React.FC = () => {
       } else if (response.ok) {
         const data = await response.json();
         setCountryData(data[0]);
+        onSearchComplete?.(name);
       } else {
         setError("An error occurred while searching");
         setCountryData(null);
@@ -87,6 +99,6 @@ const SearchBar: React.FC = () => {
       )}
     </div>
   );
-};
+})
 
 export default SearchBar;
