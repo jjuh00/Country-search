@@ -8,12 +8,13 @@ interface CountryCardProps {
 const CountryCard: React.FC<CountryCardProps> = ({ country }) => {
     const languageKey = Object.keys(country.languages)[0];
     const currencyKey = Object.keys(country.currencies)[0];
+    const nativeNameKey = Object.keys(country.name.nativeName)[0];
 
     return (
         <div className="country-card">
             <div className="card-header">
                 <h2>{country.name.common}</h2>
-                <p className="official-name">{country.name.official}</p>
+                <p className="official-name">{country.name.nativeName[nativeNameKey].official}</p>
             </div>
 
             <div className="card-content">
@@ -22,7 +23,7 @@ const CountryCard: React.FC<CountryCardProps> = ({ country }) => {
                         <i className="fi fi-rr-earth-americas"></i>
                         <div>
                             <h3>Region</h3>
-                            <p>{country.subregion} ({country.subregion !== country.continents[0] ? country.continents[0] : ""})</p>
+                            <p>{country.subregion}{country.subregion !== country.continents[0] ? `, ${country.continents[0]}` : ""}</p>
                         </div>
                     </div>
 
