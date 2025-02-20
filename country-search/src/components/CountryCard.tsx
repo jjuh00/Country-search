@@ -8,7 +8,7 @@ interface CountryCardProps {
 const CountryCard: React.FC<CountryCardProps> = ({ country }) => {
     const languageKey = Object.keys(country.languages)[0];
     const currencyKey = Object.keys(country.currencies)[0];
-    const nativeNameKeu = Object.keys(country.name.nativeName)[0];
+    const nativeNameKey = Object.keys(country.name.nativeName)[0];
 
     return (
         <div className="country-card">
@@ -26,8 +26,48 @@ const CountryCard: React.FC<CountryCardProps> = ({ country }) => {
                             <p>{country.subregion} ({country.continents[0]})</p>
                         </div>
                     </div>
+
+                    <div className="info-item">
+                        <i className="fi fi-tr-english"></i>
+                        <div>
+                            <h3>Language</h3>
+                            <p>{country.languages[languageKey]}</p>
+                            <p className="native-text">
+                                {country.name.nativeName[nativeNameKey].official}
+                            </p>
+                        </div>
+                    </div>
+
+                    <div className="info-item">
+                        <i className="fi fi-rr-usd-circle"></i>
+                        <div>
+                            <h3>Currency</h3>
+                            <p>
+                                {country.currencies[currencyKey].name}
+                                ({country.currencies[currencyKey].symbol})
+                            </p>
+                        </div>
+                    </div>
+
+                    <div className="info-item">
+                        <i className="fi fi-tr-land-location"></i>
+                        <div>
+                            <h3>Area</h3>
+                            <p>{country.area.toLocaleString()} km²</p>
+                        </div>
+                    </div>
+
+                    <div className="info-item">
+                        <i className="fi fi-ts-region-pin"></i>
+                        <div>
+                            <h3>Neighbouring Countries</h3>
+                            <p>{country.borders ? country.borders.join(", ") : "None"}</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     );
 }
+
+export default CountryCard;
