@@ -44,7 +44,7 @@ const CountryCard: React.FC<CountryCardProps> = ({ country }) => {
                         <div>
                             <h3>Currency</h3>
                             <p>
-                                {country.currencies[currencyKey].name}
+                                {country.currencies[currencyKey].name} &nbsp;
                                 ({country.currencies[currencyKey].symbol})
                             </p>
                         </div>
