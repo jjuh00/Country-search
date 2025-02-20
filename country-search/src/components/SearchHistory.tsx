@@ -29,3 +29,5 @@ const SearchHistory: React.FC<SearchHistoryProps> = ({ history, onCountrySelecte
         </div>
     );
 }
+
+export default SearchHistory;
