@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { CountryData } from "../types/Country"
 import CountryCard from "./CountryCard";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./styles/App.css";
 
 const SearchBar: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState("");

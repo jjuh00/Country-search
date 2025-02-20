@@ -1,5 +1,6 @@
 import React from "react";
 import { CountryData } from '../types/Country';
+import "./styles/App.css";
 
 interface CountryCardProps {
     country: CountryData;
