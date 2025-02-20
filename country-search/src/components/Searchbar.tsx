@@ -51,7 +51,7 @@ const SearchBar: React.FC = () => {
 
   return (
     <div className={`search-container ${countryData ? "results" : ""}`}>
-      <div className="input-group">
+      <div className="input-group mb-3">
         <input
           type="text"
           className={`form-control search-input ${error ? "is-invalid" : ""}`}
@@ -76,7 +76,7 @@ const SearchBar: React.FC = () => {
         </span>
       </div>
       {error && (
-        <div className="invalid-country d-block mt-2">
+        <div className="invalid-country d-block mb-3">
           {error}
         </div>
       )}
