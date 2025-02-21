@@ -3,10 +3,10 @@ import { CountryData } from "../types/Country"
 import CountryCard from "./CountryCard";
 
 interface SearchBarProps {
-    onSearchComplete?: (CountryName: string) => void;
+    onSearch?: (CountryName: string) => void;
 }
 
-const SearchBar = forwardRef<any, SearchBarProps>(({ onSearchComplete }, ref) => {
+const SearchBar = forwardRef<any, SearchBarProps>(({ onSearch }, ref) => {
     const [searchTerm, setSearchTerm] = useState("");
     const [error, setError] = useState<string | null>(null);
     const [isLoading, setIsLoading] = useState(false);
@@ -38,7 +38,7 @@ const SearchBar = forwardRef<any, SearchBarProps>(({ onSearchComplete }, ref) =>
             } else if (response.ok) {
                 const data = await response.json();
                 setCountryData(data[0]);
-                onSearchComplete?.(name);
+                onSearch?.(name);
             } else {
                 setError("An error occurred while searching");
                 setCountryData(null);

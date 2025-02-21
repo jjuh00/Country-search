@@ -22,7 +22,7 @@ const App: React.FC = () => {
             <main className="main-content">
                 <SearchBar 
                 ref={searchBarRef}
-                onSearchComplete={addToHistory}
+                onSearch={addToHistory}
               />
           </main>
       </div>
