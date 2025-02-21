@@ -5,6 +5,7 @@ interface CountryCardProps {
     country: CountryData;
 }
 
+// Component for displaying country datas
 const CountryCard: React.FC<CountryCardProps> = ({ country }) => {
     const languageKey = Object.keys(country.languages)[0];
     const currencyKey = Object.keys(country.currencies)[0];

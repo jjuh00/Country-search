@@ -6,6 +6,7 @@ interface SearchBarProps {
     onSearch?: (CountryName: string) => void;
 }
 
+// Main search functionality component
 const SearchBar = forwardRef<any, SearchBarProps>(({ onSearch }, ref) => {
     const [searchTerm, setSearchTerm] = useState("");
     const [error, setError] = useState<string | null>(null);

@@ -7,6 +7,7 @@ interface MenuProps {
     searchHistory: SearchHistoryItem[];
 }
 
+// Navigation bar component with history dropdown
 const DropdownMenu: React.FC<MenuProps> = ({ onHistorySelected, searchHistory }) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 

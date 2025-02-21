@@ -6,6 +6,7 @@ interface SearchHistoryProps {
     onCountrySelected: (countryName: string) => void;
 }
 
+// Component for displaying search history
 const SearchHistory: React.FC<SearchHistoryProps> = ({ history, onCountrySelected }) => {
     return (
         <div className="history-card">
