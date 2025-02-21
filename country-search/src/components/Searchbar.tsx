@@ -2,7 +2,7 @@ import React, { useState, forwardRef, useImperativeHandle } from "react";
 import { CountryData } from "../types/Country"
 import CountryCard from "./CountryCard";
 
-interface SearchBarProps {
+export interface SearchBarProps {
     onSearch?: (CountryName: string) => void;
 }
 
