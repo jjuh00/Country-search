@@ -12,6 +12,7 @@
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
     "bootstrap": "^5.3.3",
+    "jest": "^27.5.1",
     "react": "^19.0.0",
     "react-bootstrap": "^2.10.9",
     "react-dom": "^19.0.0",
