@@ -1,4 +1,4 @@
-// Utility functions for managing search history by using a hook
+// Utility functions for managing search history by using localStorage
 import { useState, useEffect } from "react";
 import { SearchHistoryItem } from "../types/History";
 
