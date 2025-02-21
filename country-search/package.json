@@ -21,7 +21,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --watchAll --testMatch **/src/test.js",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -44,7 +44,6 @@
   },
   "devDependencies": {
     "@testing-library/dom": "^10.4.0",
-    "@testing-library/react-hooks": "^8.0.1",
     "jest-fetch-mock": "^3.0.3"
   }
 }

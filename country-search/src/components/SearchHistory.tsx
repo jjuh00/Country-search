@@ -7,7 +7,12 @@ interface SearchHistoryProps {
 }
 
 // Component for displaying search history
-const SearchHistory: React.FC<SearchHistoryProps> = ({ history, onCountrySelected }) => {
+const SearchHistory: React.FC<SearchHistoryProps> = ({ history = [], onCountrySelected }) => {
+    // Runtime check
+    if (!Array.isArray(history)) {
+        console.warn("History prop is nor an array");
+    }
+
     return (
         <div className="history-card">
             <div className="history-header">
@@ -21,7 +26,7 @@ const SearchHistory: React.FC<SearchHistoryProps> = ({ history, onCountrySelecte
                         {history.map((item, i) => (
                             <li key={item.time + i} onClick={() => onCountrySelected(item.countryName)}>
                                 <span className="country-name">{item.countryName}</span>
-                                <span className="seaech-time">{new Date(item.time).toLocaleDateString()}</span>
+                                <span className="search-time">{new Date(item.time).toLocaleDateString()}</span>
                             </li>
                         ))}
                     </ul>
