@@ -8,6 +8,10 @@ import SearchHistory from "./components/SearchHistory";
 import DropdownMenu from "./components/Menu";
 import { useSearchHistory } from "./hooks/UseHistory";
 
+// I encountered some erros and bugs (which I couldn't fix) 
+// when trying to write this test with TypeScript, 
+// which is why this test is done with JavaScript instead of TS.
+
 // Mock data
 const mockCountryData = {
     name: {
