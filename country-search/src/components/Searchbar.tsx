@@ -13,12 +13,13 @@ const SearchBar = forwardRef<any, SearchBarProps>(({ onSearch }, ref) => {
     const [countryData, setCountryData] = useState<CountryData | null>(null);
 
     useImperativeHandle(ref, () => ({
-      performSearch: (countryName: string) => {
-        setSearchTerm(countryName);
-        fetchCountry(countryName);
-      }
+        performSearch: (countryName: string) => {
+            setSearchTerm(countryName);
+            fetchCountry(countryName);
+        }
     }))
 
+    // Handle country search
     const fetchCountry = async (name: string = searchTerm) => {
         if (!name.trim()) {
             setError("Please enter a country name");
@@ -55,6 +56,7 @@ const SearchBar = forwardRef<any, SearchBarProps>(({ onSearch }, ref) => {
         fetchCountry();
     };
 
+    // Handle Enter key press
     const handleKeyPress = (e: React.KeyboardEvent) => {
         if (e.key === "Enter") {
             handleSearch();

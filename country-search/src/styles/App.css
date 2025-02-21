@@ -44,6 +44,8 @@ h1 {
     padding: 0.3rem 0.5rem;
 }
 
+
+/* Ensure search bar's position on the page, so user(s) can access it any time */
 .search-container {
     display: flex;
     flex-direction: column;
@@ -73,7 +75,7 @@ h1 {
 }
 
 .country-result {
-    margin-top: 1.25rem;
+    margin-top: 1.25rem; /* Push country card below the search bar */
     width: 100%;
     max-width: 800px;
     max-height: 66vh;
@@ -202,11 +204,6 @@ h1 {
     justify-content: space-between;
     align-items: center;
     cursor: pointer;
-    transition: background-color 0.2s;
-}
-
-.history-list li:hover {
-    background-color: white;
 }
 
 .country-name {

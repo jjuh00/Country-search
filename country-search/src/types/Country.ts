@@ -1,3 +1,4 @@
+// Type definitios for country data
 export interface CountryData {
     name: {
         common: string;

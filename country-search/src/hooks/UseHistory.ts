@@ -1,3 +1,4 @@
+// Utility functions for managing search history by using a hook
 import { useState, useEffect } from "react";
 import { SearchHistoryItem } from "../types/History";
 
@@ -15,6 +16,7 @@ export const useSearchHistory = () => {
     }, [searchHistory]);
 
     const addToHistory = (countryName: string) => {
+        // Add a new item and keep only the last 10 searches
         setSearchHistory(prevHistory => {
             const newHistory = [
                 { countryName, time: Date.now() },

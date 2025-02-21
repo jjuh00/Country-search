@@ -4,9 +4,11 @@ import SearchBar from "./components/Searchbar";
 import { useSearchHistory } from "./hooks/UseHistory";
 
 const App: React.FC = () => {
+    // Custom hook to manage search history
     const { searchHistory, addToHistory } = useSearchHistory();
     const searchBarRef = useRef<any>(null);
 
+    // Function to handle a country search from search history
     const handleHistorySelect = (countryName: string) => {
         if (searchBarRef.current) {
             searchBarRef.current.performSearch(countryName);
