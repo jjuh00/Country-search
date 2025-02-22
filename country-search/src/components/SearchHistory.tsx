@@ -6,11 +6,11 @@ interface SearchHistoryProps {
     onCountrySelected: (countryName: string) => void;
 }
 
-// Component for displaying search history
+// Component for displaying search history (which can be found from dropdown menu)
 const SearchHistory: React.FC<SearchHistoryProps> = ({ history = [], onCountrySelected }) => {
     // Runtime check
     if (!Array.isArray(history)) {
-        console.warn("History prop is nor an array");
+        console.warn("History prop is not an array");
     }
 
     return (

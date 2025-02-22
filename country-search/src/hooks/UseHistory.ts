@@ -16,7 +16,7 @@ export const useSearchHistory = () => {
     }, [searchHistory]);
 
     const addToHistory = (countryName: string) => {
-        // Add a new item and keep only the last 10 searches
+        // Add a new item and only keep last 10 searches
         setSearchHistory(prevHistory => {
             const newHistory = [
                 { countryName, time: Date.now() },
