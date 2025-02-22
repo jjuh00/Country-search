@@ -76,7 +76,7 @@ const SearchBar = forwardRef<any, SearchBarProps>(({ onSearch }, ref) => {
                     onKeyDown={handleKeyPress}
                     disabled={isLoading}
                   />
-                <span 
+                <button 
                     className={`input-group-text search-icon ${isLoading ? "disabled" : ""}`}
                     onClick={handleSearch}
                     style={{ cursor: isLoading ? "not-allowed" : "pointer" }}
@@ -88,7 +88,7 @@ const SearchBar = forwardRef<any, SearchBarProps>(({ onSearch }, ref) => {
                     ) : (
                         <i className="fi fi-tr-issue-loupe"></i>
                     )}
-                </span>
+                </button>
             </div>
             {error && (
                 <div className="invalid-country d-block mb-3">

@@ -69,7 +69,7 @@ describe("SearchBar Component", () => {
     });
 
     test("handles search with spaces", async () => {
-        fetch.mockResponseOnce(JSON.stringify)([mockCountryData]);
+        fetch.mockResponseOnce(JSON.stringify([mockCountryData]));
 
         render(<SearchBar />);
         const input = screen.getByPlaceholderText("Enter a country");
@@ -77,12 +77,12 @@ describe("SearchBar Component", () => {
         fireEvent.click(screen.getByRole("button"));
 
         await waitFor(() => {
-            expect(fetch).toHaveBeenCalledWith("https://restcountries.com/v3.1/name/Fin%land");
+            expect(fetch).toHaveBeenCalledWith("https://restcountries.com/v3.1/name/Fin%20land");
         });
     });
 
     test("handles Enter key press", async () => {
-        fetch.mockResponseOnce(JSON.stringify)([mockCountryData]);
+        fetch.mockResponseOnce(JSON.stringify([mockCountryData]));
 
         render(<SearchBar />);
         const input = screen.getByPlaceholderText("Enter a country");
@@ -248,13 +248,15 @@ describe("useSearchHistory Hook", () => {
             result.current.addToHistory("Finland");
         });
 
-        expect(result.current.searchHistory).toHaveLength(1);
-        expect(result.searchHistory[0].countryName).toBe("Finland");
+        await waitFor(() => {
+            expect(result.current.searchHistory).toHaveLength(1);
+            expect(result.current.searchHistory[0].countryName).toBe("Finland");
+        });
     });
 
     test("loads history from localStorage on initialization", () => {
         const initialHistory = [{ countryName: "Finland", time: Date.now() }];
-        localStorage.setItem("countrySearchhistory", JSON.stringify(initialHistory));
+        localStorage.setItem("countrySearchHistory", JSON.stringify(initialHistory));
 
         const { result } = renderHook(() => useSearchHistory());
         expect(result.current.searchHistory).toHaveLength(1);
@@ -288,10 +290,11 @@ describe("App integration", () => {
 
         render(<App />);
 
-        // Perform initial search
+        // Define correct buttons and perform initial search
         const input = screen.getByPlaceholderText("Enter a country");
         fireEvent.change(input, { target: { value: "Finland" } });
-        fireEvent.click(screen.getByRole("button"));
+        const buttons = screen.getAllByRole("button");
+        fireEvent.click(buttons[1]); // Assume second button is the search button
 
         // Verify country data loading into the page
         await waitFor(() => {
@@ -300,11 +303,11 @@ describe("App integration", () => {
         });
 
         // Open history and verify an entry
-        fireEvent.click(screen.getByRole("button"));
-        expect(screen.getByText("Finland")).toBeInTheDocument();
+        fireEvent.click(buttons[0]); // Assume first button is the dropdown toggle
+        expect(screen.getByText("Finland", { selector : ".country-name" })).toBeInTheDocument();
 
         // Select country from history
-        fireEvent.click(screen.getByText("Finland"));
+        fireEvent.click(screen.getByText("Finland", { selector: ".country-name" }));
 
         // Verify search is perfomed again
         await waitFor(() => {
